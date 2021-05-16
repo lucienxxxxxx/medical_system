@@ -120,7 +120,7 @@
             <label class="layui-form-label layui-form-required">药品功能</label>
             <div class="layui-input-block">
                 <input name="function" placeholder="请输入药品功能" type="text" class="layui-input" maxlength="20"
-                          lay-verType="tips" lay-verify="required" required/>
+                       lay-verType="tips" lay-verify="required" required/>
             </div>
         </div>
         <div class="layui-form-item text-right">
@@ -156,6 +156,8 @@
                 {field: 'pdate', sort: true, title: '生产日期'},
                 {field: 'vdate', sort: true, title: '有效日期'},
                 {field: 'dsize', sort: true, title: '规格'},
+                {field: 'useMethod', sort: true, title: '用量'},
+                {field: 'function', sort: true, title: '功能'},
                 {align: 'center', toolbar: '#tableBarUser', title: '操作', minWidth: 200}
             ]]
         });
@@ -178,6 +180,8 @@
                 showEditModel(data);
             } else if (layEvent === 'del') { // 删除
                 doDel(data.id, data.mname);
+            } else if (layEvent === 'details') { // 删除
+                showDetail(data);
             }
         });
 
@@ -212,6 +216,14 @@
             });
         }
 
+        function showDetail(data) {
+            admin.open(
+
+            )
+
+            return false;
+        }
+
         // 删除
         function doDel(id, mname) {
             layer.confirm('确定要删除“' + mname + '”吗？', {
@@ -233,8 +245,6 @@
                 }, 'json');
             });
         }
-
-
 
 
     });

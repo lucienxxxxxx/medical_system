@@ -75,7 +75,7 @@
                     <dl class="layui-nav-child">
                         <dd><a lay-href="/medical/index">药箱</a></dd>
                         <dd><a lay-href="/user/index">用户管理</a></dd>
-                        <dd><a lay-href="page/system/authorities.html">权限管理</a></dd>
+                        <dd><a lay-href="/">家庭成员</a></dd>
                         <dd><a lay-href="page/system/loginRecord.html">登录日志</a></dd>
                     </dl>
                 </li>
@@ -107,7 +107,7 @@
 
         // 默认加载主页
         index.loadHome({
-            menuPath: 'page/console/console.html',
+            menuPath: '/medical/index',
             menuName: '<i class="layui-icon layui-icon-home"></i>'
         });
 

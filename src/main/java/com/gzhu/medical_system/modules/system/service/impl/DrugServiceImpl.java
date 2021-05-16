@@ -28,11 +28,11 @@ public class DrugServiceImpl extends ServiceImpl<DrugMapper, Drug> implements ID
         if (drug.getMname()!=null&&drug.getMname().length()>0){
             queryWrapper.like("mname",drug.getMname());
         }
-        if (drug.getMname()!=null&&drug.getMname().length()>0){
-            queryWrapper.like("pid",drug.getMname());
+        if (drug.getPid()!=null){
+            queryWrapper.like("pid",drug.getPid());
         }
-        if (drug.getMname()!=null&&drug.getMname().length()>0){
-            queryWrapper.like("pcompany",drug.getMname());
+        if (drug.getPcompany()!=null&&drug.getPcompany().length()>0){
+            queryWrapper.like("pcompany",drug.getPcompany());
         }
         IPage iPage=this.page(pageInfo,queryWrapper);
         drugPage.setCount(iPage.getTotal());
