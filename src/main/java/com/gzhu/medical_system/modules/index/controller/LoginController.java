@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @Version 1.0版本
  */
 @Controller
+
 public class LoginController {
     @Autowired
     public UserMapper userMapper;
@@ -41,6 +43,7 @@ public class LoginController {
             QueryWrapper<User> queryWrapper=new QueryWrapper<User>();
             queryWrapper.eq("username", user.getUsername());
             User myUser=this.userMapper.selectOne(queryWrapper);
+            System.out.println(myUser.toString());
             if(myUser!=null&&myUser.getPassword().equals(user.getPassword())){
                 data.setMsg("登录成功！");
                 data.setCode(200);

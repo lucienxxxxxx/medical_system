@@ -7,6 +7,7 @@ import com.gzhu.medical_system.modules.system.service.IDrugService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -48,11 +49,27 @@ public class MedicalController {
                 data.setMsg("保存成功");
             }
             data.setCode(200);
-
         } catch (Exception e) {
             e.printStackTrace();
             data.setMsg("失败了:(");
         }
         return data;
     }
+
+    @PostMapping("delete")
+    @ResponseBody
+    public ResonseData delete(int id){
+        ResonseData data =new ResonseData();
+        try{
+            this.drugService.removeById(id);
+            data.setCode(200);
+            data.setMsg("删除成功！");
+        }catch (Exception e){
+            data.setMsg("删除失败！");
+            e.printStackTrace();
+        }
+        return data;
+    }
 }
+
+

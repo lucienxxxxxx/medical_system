@@ -6,7 +6,9 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>登录</title>
+    <title>医疗系统</title>
+
+
     <script>
         if (window != top) {
             top.location.replace(location.href);
@@ -27,7 +29,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><i class="layui-icon layui-icon-username"></i></label>
                     <div class="layui-input-block">
-                        <input name="username" type="text" placeholder="用户名" class="layui-input"
+                        <input name="username" type="text" placeholder="账号" class="layui-input"
                                lay-verType="tips" lay-verify="required" required/>
                     </div>
                 </div>
@@ -70,9 +72,15 @@
     </div>
 
     <div class="login-footer">
-        <p>© 2019 medicalsystem.com 版权所有</p>
+        <p>© 2019 easyweb.vip 版权所有</p>
+        <p>
+            <span><a href="https://easyweb.vip" target="_blank">获取授权</a></span>
+            <span><a href="https://easyweb.vip/doc/" target="_blank">开发文档</a></span>
+            <span><a href="https://demo.easyweb.vip/spa/" target="_blank">单页面版</a></span>
+        </p>
     </div>
 </div>
+
 
 
 <script>
@@ -82,19 +90,20 @@
         var form = layui.form;
 
         // 表单提交
-        form.on('submit(login-submit)', function (obj) {
-            console.log(obj.field);
-            var url="/login/check"
-            layer.load(2);
+        form.on('submit(login-submit)', function (data) {
+            var url="login/check"
+            // layer.msg('登录成功', {icon: 1, time: 1500}, function () {
+            //     location.replace('system/index')
+            // });
             $.post(url, data.field, function (res) {
                 layer.closeAll('loading');
                 if (res.code == 200) {
                     console.log(data.field);
-                    layer.msg(res.msg, {icon: 1, time: 1500}, function () {
-                        location.replace('/system/index')
+                    layer.msg('登录成功', {icon: 1, time: 1500}, function () {
+                        location.replace('system/index')
                     });
                 } else if (res.code==0){
-                    layer.msg(res.msg, {icon: 2,time: 1500});
+                    layer.msg('密码或者用户名错误', {icon: 2,time: 1500});
                 }
             }, 'json');
             return false;

@@ -135,7 +135,7 @@
                     if (res.code == 200) {
                         console.log(data.field);
                         layer.msg(res.msg, {icon: 1, time: 1500}, function () {
-                            location.replace('/login')
+                            location.replace('login')
                         });
                     } else if (res.code==0){
                         layer.msg(res.msg, {icon: 2,time: 1500});

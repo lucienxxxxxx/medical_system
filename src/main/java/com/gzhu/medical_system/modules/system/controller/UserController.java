@@ -24,6 +24,10 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
+    @GetMapping("/info")
+    public String info(){
+        return "system/user/info";
+    }
     @GetMapping("index")
     public String index() {
         return "system/user/index";

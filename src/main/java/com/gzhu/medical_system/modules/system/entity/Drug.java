@@ -1,5 +1,7 @@
 package com.gzhu.medical_system.modules.system.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -13,7 +15,8 @@ import lombok.Data;
 @Data
 @TableName(value = "drugs")
 public class Drug {
-    private Long id;
+    @TableId(value = "id",type = IdType.AUTO)
+    private Integer id;
     private String mname;
     private Integer pid;
     private String pdate;

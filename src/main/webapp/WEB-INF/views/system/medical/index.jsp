@@ -66,7 +66,6 @@
     <form id="modelUserForm" lay-filter="modelUserForm" class="layui-form model-form layui-row">
         <input name="userId" type="hidden"/>
 
-
         <div class="layui-form-item">
             <label class="layui-form-label layui-form-required">产品名称</label>
             <div class="layui-input-block">
@@ -178,9 +177,7 @@
             if (layEvent === 'edit') { // 修改
                 showEditModel(data);
             } else if (layEvent === 'del') { // 删除
-                doDel(data.userId, data.nickName);
-            } else if (layEvent === 'reset') { // 重置密码
-                resetPsw(data.userId, data.nickName);
+                doDel(data.id, data.mname);
             }
         });
 
@@ -216,20 +213,20 @@
         }
 
         // 删除
-        function doDel(userId, nickName) {
-            layer.confirm('确定要删除“' + nickName + '”吗？', {
+        function doDel(id, mname) {
+            layer.confirm('确定要删除“' + mname + '”吗？', {
                 skin: 'layui-layer-admin',
                 shade: .1
             }, function (i) {
                 layer.close(i);
                 layer.load(2);
-                $.get('../../json/ok.json', {
-                    userId: userId
+                $.post('/medical/delete', {
+                    id: id
                 }, function (res) {
                     layer.closeAll('loading');
                     if (res.code == 200) {
                         layer.msg(res.msg, {icon: 1});
-                        insTb.reload({}, 'data');
+                        insTrb.reload({}, 'data');
                     } else {
                         layer.msg(res.msg, {icon: 2});
                     }
